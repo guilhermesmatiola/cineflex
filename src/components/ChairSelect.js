@@ -60,15 +60,57 @@ export default function ChairSelect({idSessao}){
                  <h3>Indisponível</h3> 
             </Column>
         </ChairInfos>
-        {/* <Footer>
+        <Footer>
             <PosterBox >
-                <Poster id={idSessao} src={idSessao.posterURL} alt={idSessao.title}/>
+                <Poster id={chairs.movie.id} src={chairs.movie.posterURL} alt={chairs.movie.title}/>
             </PosterBox>
-                <TextDate> {idSessao.title} </TextDate>
-        </Footer> */}
+                <TextDate> {chairs.movie.title} <br></br> {chairs.day.weekday} - {chairs.name} </TextDate>
+        </Footer> 
         </>
     )
 }
+
+const Footer = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    
+    background: #DFE6ED;
+    border: 1px solid #9EADBA;
+    position: fixed;
+    left:0;
+    bottom:0;
+    height: 117px;
+    h1{
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 26px;
+        line-height: 30px;
+        display: flex;
+        align-items: center;
+        color: #293845;
+    }
+` ;
+const PosterBox = styled.div`
+    width: 64px;
+    height:89px;;
+    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:10px;
+    background: #ffffff;
+` ;
+
+const Poster = styled.img`
+    width: 48px;
+    height: 72px;;
+` ;
+const TextDate = styled.h1`
+    display: flex;
+`
 
 const ContainerChairs = styled.div`
     display: flex;
