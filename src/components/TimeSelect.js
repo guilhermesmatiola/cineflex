@@ -4,6 +4,7 @@ import { useParams , Link } from "react-router-dom";
 import React, { useEffect } from 'react';
 import Times from './Times';
 
+
 export default function MovieSelect({id}){
   
     const [sessions, setSessions] = React.useState([]);
@@ -31,11 +32,11 @@ export default function MovieSelect({id}){
             <Container>
             {sessions.days.map((session) => (
                 <>
-                    <TextDate id={session.id}>
+                    <TextDate style={{ textDecoration: 'none' }} id={session.id}>
                         {session.weekday} - {session.date}
                     </TextDate>
                     <OrangeBoxes>
-                        <Times showtimes={session.showtimes}/>
+                        <Times style={{ textDecoration: 'none' }} showtimes={session.showtimes}/>
                     </OrangeBoxes>
                 </>
             ))}
@@ -54,7 +55,7 @@ const Footer = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
-    margin:10px;
+    
     background: #DFE6ED;
     border: 1px solid #9EADBA;
     position: fixed;
@@ -104,6 +105,7 @@ const TextDate =styled.h1`
     align-items: center;
     letter-spacing: 0.02em;
     color: #293845;
+    text-decoration: none;
 `
 
 const Container= styled.div`
@@ -115,6 +117,8 @@ const Container= styled.div`
     flex-wrap: wrap;
     margin-top: 20px;
     margin-bottom: 15px;
+    text-decoration: snow;
+    margin-bottom: 130px;
 `
 
 const PosterBox = styled.div`
@@ -130,6 +134,6 @@ const PosterBox = styled.div`
 ` ;
 
 const Poster = styled.img`
-    width:48px;
+    width: 48px;
     height: 72px;;
 ` ;

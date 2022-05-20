@@ -46,7 +46,26 @@ export default function ChairSelect({idSessao}){
                 <Chair object={seat} selected={isSelected[seat.id+1]} selectChair={selectChair} key={seat.id}/>
             ))}
         </ContainerChairs>
-        
+        <ChairInfos>
+            <Column>
+                <GreenBall></GreenBall>
+                <h3>Selecionado</h3> 
+            </Column>
+            <Column>
+                 <GreyBall></GreyBall>
+                 <h3>Disponível</h3> 
+            </Column>
+            <Column>
+                 <YellowBall></YellowBall>
+                 <h3>Indisponível</h3> 
+            </Column>
+        </ChairInfos>
+        {/* <Footer>
+            <PosterBox >
+                <Poster id={idSessao} src={idSessao.posterURL} alt={idSessao.title}/>
+            </PosterBox>
+                <TextDate> {idSessao.title} </TextDate>
+        </Footer> */}
         </>
     )
 }
@@ -56,7 +75,8 @@ const ContainerChairs = styled.div`
     justify-content: space-around;
     flex-wrap: wrap;
     margin-top: 10px;
-    margin: 10px;
+    margin-left: 39px;
+    margin-right: 39px;
 `
 
 const Text = styled.h1`
@@ -79,4 +99,63 @@ const OrangeBoxes = styled.div`
     flex-direction:row;
     align-items: center;
     justify-content: center;
+`
+
+const ChairInfos = styled.div`
+    
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    
+`
+const GreenBall= styled.div`
+    width: 26px;
+    height: 26px;
+    box-sizing: border-box;
+    border: 1px solid #1AAE9E;
+    border-radius: 12px;
+    background: #8DD7CF;
+    
+`
+const GreyBall= styled.div`
+    
+    width: 26px;
+    height: 26px;
+    box-sizing: border-box;
+    background: #C3CFD9;
+    border-radius: 12px;
+    border: 1px solid #7B8B99
+    
+`
+const YellowBall= styled.div`
+    
+    width: 26px;
+    height: 26px;
+    box-sizing: border-box;
+    border: 1px solid #F7C52B;
+    border-radius: 12px;
+    background: #FBE192;
+
+    
+`
+const Column = styled.div`
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h3{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.013em;
+    margin-top: 5px;
+    color: #4E5A65;
+    }
 `
