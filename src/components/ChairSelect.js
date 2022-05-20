@@ -4,6 +4,7 @@ import { useParams , Link } from "react-router-dom";
 import React, { useEffect } from 'react';
 import Times from './Times';
 import Chair from './Chair';
+import Forms from './Forms';
 
 export default function ChairSelect({idSessao}){
     let params = useParams();
@@ -60,6 +61,7 @@ export default function ChairSelect({idSessao}){
                  <h3>Indisponível</h3> 
             </Column>
         </ChairInfos>
+        <Forms/>
         <Footer>
             <PosterBox >
                 <Poster id={chairs.movie.id} src={chairs.movie.posterURL} alt={chairs.movie.title}/>
