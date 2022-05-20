@@ -17,8 +17,9 @@ export default function Header(){
 const TopBar=styled.div`
     width: 100%;
     background-color: #E8833A;
-    
+    z-index: 1;
     h1{
+    z-index: 1;
     font-family: 'Roboto', sans-serif;
     font-size: 34px;
     color: #E8833A;
@@ -33,3 +34,4 @@ const TopBar=styled.div`
     width: 100%;
     }
 `;
+
