@@ -95,6 +95,7 @@ const Container = styled.div`
     border-radius: 3px;
     text-decoration: italic;
     padding-left: 18px;
+    box-sizing: border-box;
     ::placeholder{
         font-style: italic;
         font-weight: 400;
