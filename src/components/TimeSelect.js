@@ -36,7 +36,7 @@ export default function MovieSelect({id}){
                         {session.weekday} - {session.date}
                     </TextDate>
                     <OrangeBoxes>
-                        <Times style={{ textDecoration: 'none' }} showtimes={session.showtimes}/>
+                       <Times style={{ textDecoration: 'none' }} showtimes={session.showtimes}/> 
                     </OrangeBoxes>
                 </>
             ))}
@@ -50,6 +50,8 @@ export default function MovieSelect({id}){
         </>
     );
 }
+
+
 
 const Footer = styled.div`
     width: 100%;
@@ -86,6 +88,7 @@ const Text = styled.h1`
     font-size: 24px;
     line-height: 28px;
     letter-spacing: 0.04em;
+    text-decoration: none;
 ` ;
 
 const OrangeBoxes = styled.div`
@@ -93,6 +96,10 @@ const OrangeBoxes = styled.div`
     flex-direction:row;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
+    a{
+        text-decoration: none;
+    }
 `
 
 const TextDate =styled.h1`

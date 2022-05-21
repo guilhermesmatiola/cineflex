@@ -5,11 +5,11 @@ import {useLocation,Link} from "react-router-dom";
 export default function Success(){
 
     const {state} = useLocation();
-    const {name ,cpf, title , date ,time, chairs} = state; // Read values passed on state
+    const {name ,cpf, title , date ,time, chairs,ids} = state;
 
     
     
-    
+    console.log(state);
 
     return( 
         <>
@@ -23,8 +23,8 @@ export default function Success(){
             <TextBasic> {title} <br></br> {date} {time}  </TextBasic>
             <LabelItem></LabelItem>
             <Bold> Ingressos </Bold>
-                {chairs.map((seat) => (
-                <TextBasic> Assento {seat} </TextBasic>
+                {chairs.map((chairs) => (
+                <TextBasic> Assento {chairs} </TextBasic>
                 ))}
             <LabelItem></LabelItem>
             <Bold> Comprador </Bold>

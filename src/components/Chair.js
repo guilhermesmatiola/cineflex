@@ -29,7 +29,7 @@ export default function Card({object,ids,selectChair,idCadeira}) {
         
     return(
         <>
-            <ChairState onClick={()=>{if(object.isAvailable){selectChair(idCadeira)}else{alert("Esse assento não está disp")}}} color={color} border={border}>
+            <ChairState onClick={()=>{if(object.isAvailable){selectChair(idCadeira)}else{alert("Esse assento não está disponível")}}} color={color} border={border}>
                 <h1>{object.name}</h1> 
             </ChairState>
         </>
