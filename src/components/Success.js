@@ -5,7 +5,7 @@ import {useLocation,Link} from "react-router-dom";
 export default function Success(){
 
     const {state} = useLocation();
-    const {name ,cpf, title , date ,time, chairs,ids} = state;
+    const {name ,cpf, title , date ,time, chairs} = state;
 
     
     

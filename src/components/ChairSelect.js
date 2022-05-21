@@ -24,42 +24,35 @@ export default function ChairSelect(){
 	}, []);
 
     const [ids, setIds] = React.useState([]);
-    const [chairnumbers, setChairnumbers] = React.useState([]);
-
+    const [chairnames, setChairnames] = React.useState([]);
     
-        
-    function chairnames(element){
-        let tempchairs=[...chairnumbers];
+    function Chairnames(element){
         for(let i=0;i<chairs.seats.length;i++){
             if(chairs.seats[i].id===element){
-                console.log("i "+i);
-                tempchairs.push(chairs.seats[i].name);
-                console.log("chairs.seats[i].name "+chairs.seats[i].name);
+                setChairnames([...chairnames, (i+1)]);
             }
-        }
-        setChairnumbers(tempchairs);
-        console.log("chairnumbers "+chairnumbers);
-        
+        }    
     }
 
     function selectChair(id){
+        Chairnames(id);
         let newids=[...ids];
         for(let i=0;i<newids.length;i++){
             if(newids[i]===id){
                 newids.splice(i);
                 setIds(newids);
+                
                 return;
             }
-
         }
         newids.push(id);
         setIds(newids);
-        ids.map(chairnames);
     }
 
 	if(chairs.length ===  0) {
 		return (<h1>Loading...</h1>);
 	}
+
 
     return(
         <>
@@ -83,7 +76,7 @@ export default function ChairSelect(){
                  <h3>Indisponível</h3> 
             </Column>
         </ChairInfos>
-        <Forms title={chairs.movie.title} date={chairs.day.date} time={chairs.name} ids={ids} chairs={chairnumbers}/>
+        <Forms title={chairs.movie.title} date={chairs.day.date} time={chairs.name} ids={ids} chairs={chairnames}/>
         <Footer>
             <PosterBox >
                 <Poster id={chairs.movie.id} src={chairs.movie.posterURL} alt={chairs.movie.title}/>

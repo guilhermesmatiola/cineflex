@@ -1,7 +1,8 @@
-import { useState } from "react";
+import React,{ useState } from "react";
 import styled from "styled-components";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+
 
 export default function Forms({ids, title, date, time, chairs}) {
 
