@@ -1,14 +1,20 @@
 import styled from 'styled-components';
-import { useParams , Link } from "react-router-dom";
-import React, { useEffect } from 'react';
+import React from 'react';
 
-
-export default function Card({ object,selected,selectChair}) { 
+export default function Card({object,ids,selectChair,idCadeira}) { 
 
     let color="#C3CFD9";
     let border="#808F9D";
 
-    if(selected){
+    let isSelected=false;
+
+    for(let i=0;i<ids.length;i++){
+        if(ids[i]===idCadeira){
+            isSelected=true;
+        }
+    }
+
+    if(isSelected){
         color="#8DD7CF";
         border="#1AAE9E"
     }else{
@@ -20,15 +26,14 @@ export default function Card({ object,selected,selectChair}) {
             border='#F7C52B';
         }  
     }
-    
+        
     return(
         <>
-            <ChairState onClick={()=>{if(object.isAvailable){selectChair(object.id+1)}}} color={color} border={border}>
+            <ChairState onClick={()=>{if(object.isAvailable){selectChair(idCadeira)}else{alert("Esse assento não está disp")}}} color={color} border={border}>
                 <h1>{object.name}</h1> 
             </ChairState>
         </>
     );
-    
 }
 
 const ChairState = styled.div`

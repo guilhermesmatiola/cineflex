@@ -1,22 +1,33 @@
 import { useState } from "react";
 import styled from "styled-components";
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
-export default function ContactForm() {
+export default function Forms({ids, title, date, time, chairs}) {
 
+  let navigate = useNavigate();
   const [name, setName] = useState("");
   const [CPF, setCPF] = useState("");
 
   function submitData(event) {
     event.preventDefault();
-    alert("Mensagem enviada com sucesso!");
-    setName("");
-    setCPF("");
+
+    let postObject={
+        ids: ids,
+        name: name,
+        cpf: CPF
+    };
+    
+    const promise=axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many",postObject);
+
+    promise.then(resposta => {
+        setName("");
+        setCPF("");
+        navigate("/sucesso", { state: { name:name , cpf:CPF, title:title , date:date , time:time, chairs: chairs } });
+    });
   }
 
- 
-
   return (
-    
     <FormsContainer>
       <Container>
         Nome do comprador
@@ -29,7 +40,7 @@ export default function ContactForm() {
       </Container>
       <Container>
         CPF do comprador
-        <input 
+        <input
             type="text"
             placeholder="Digite seu CPF..."
             onChange={(e) => setCPF(e.target.value)}
@@ -39,8 +50,7 @@ export default function ContactForm() {
       <OrangeBox onClick={submitData}>
         Reservar assento(s)
       </OrangeBox>
-    </FormsContainer>
-    
+    </FormsContainer>  
   );
 }
 

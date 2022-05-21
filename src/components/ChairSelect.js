@@ -1,14 +1,12 @@
 import styled from 'styled-components';
 import axios from 'axios';
-import { useParams , Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import React, { useEffect } from 'react';
-import Times from './Times';
 import Chair from './Chair';
 import Forms from './Forms';
 
-export default function ChairSelect({idSessao}){
-    let params = useParams();
-    console.log("params.idSessão: "+params.idSessao);
+export default function ChairSelect(){
+    const params = useParams();
 
     const [chairs, setChairs] = React.useState([]);
 
@@ -21,18 +19,42 @@ export default function ChairSelect({idSessao}){
             for(let i=0;i<resposta.data.seats.length+1;i++){
                 arr.push(false);
             }
-            setIsSelected(arr);
         });
 
 	}, []);
 
-    const [isSelected, setIsSelected] = React.useState([false]);
+    const [ids, setIds] = React.useState([]);
+    const [chairnumbers, setChairnumbers] = React.useState([]);
+
+    
+        
+    function chairnames(element){
+        let tempchairs=[...chairnumbers];
+        for(let i=0;i<chairs.seats.length;i++){
+            if(chairs.seats[i].id===element){
+                console.log("i "+i);
+                tempchairs.push(chairs.seats[i].name);
+                console.log("chairs.seats[i].name "+chairs.seats[i].name);
+            }
+        }
+        setChairnumbers(tempchairs);
+        console.log("chairnumbers "+chairnumbers);
+        
+    }
 
     function selectChair(id){
-        
-        let newStates=[...isSelected];
-        newStates[id]=true;
-        setIsSelected(newStates);
+        let newids=[...ids];
+        for(let i=0;i<newids.length;i++){
+            if(newids[i]===id){
+                newids.splice(i);
+                setIds(newids);
+                return;
+            }
+
+        }
+        newids.push(id);
+        setIds(newids);
+        ids.map(chairnames);
     }
 
 	if(chairs.length ===  0) {
@@ -44,7 +66,7 @@ export default function ChairSelect({idSessao}){
         <Text>Selecione o(s) assento(s)</Text>
         <ContainerChairs>
             {chairs.seats.map((seat) => (
-                <Chair object={seat} selected={isSelected[seat.id+1]} selectChair={selectChair} key={seat.id}/>
+                <Chair object={seat} ids={ids}  selectChair={selectChair} idCadeira={seat.id} key={seat.id}/>
             ))}
         </ContainerChairs>
         <ChairInfos>
@@ -61,15 +83,15 @@ export default function ChairSelect({idSessao}){
                  <h3>Indisponível</h3> 
             </Column>
         </ChairInfos>
-        <Forms/>
+        <Forms title={chairs.movie.title} date={chairs.day.date} time={chairs.name} ids={ids} chairs={chairnumbers}/>
         <Footer>
             <PosterBox >
                 <Poster id={chairs.movie.id} src={chairs.movie.posterURL} alt={chairs.movie.title}/>
             </PosterBox>
-                <TextDate> {chairs.movie.title} <br></br> {chairs.day.weekday} - {chairs.name} </TextDate>
-        </Footer> 
+            <TextDate> {chairs.movie.title} <br/>{chairs.day.weekday} - {chairs.name}</TextDate>
+        </Footer>
         </>
-    )
+    );
 }
 
 const Footer = styled.div`
@@ -112,7 +134,7 @@ const Poster = styled.img`
 ` ;
 const TextDate = styled.h1`
     display: flex;
-`
+`;
 
 const ContainerChairs = styled.div`
     display: flex;
@@ -121,7 +143,7 @@ const ContainerChairs = styled.div`
     margin-top: 10px;
     margin-left: 39px;
     margin-right: 39px;
-`
+`;
 
 const Text = styled.h1`
     margin: 10px;
@@ -143,7 +165,7 @@ const OrangeBoxes = styled.div`
     flex-direction:row;
     align-items: center;
     justify-content: center;
-`
+`;
 
 const ChairInfos = styled.div`
     
@@ -153,7 +175,7 @@ const ChairInfos = styled.div`
     flex-wrap: wrap;
     margin-top: 10px;
     
-`
+`;
 const GreenBall= styled.div`
     width: 26px;
     height: 26px;
@@ -162,7 +184,7 @@ const GreenBall= styled.div`
     border-radius: 12px;
     background: #8DD7CF;
     
-`
+`;
 const GreyBall= styled.div`
     
     width: 26px;
@@ -172,7 +194,7 @@ const GreyBall= styled.div`
     border-radius: 12px;
     border: 1px solid #7B8B99
     
-`
+`;
 const YellowBall= styled.div`
     
     width: 26px;
@@ -182,8 +204,7 @@ const YellowBall= styled.div`
     border-radius: 12px;
     background: #FBE192;
 
-    
-`
+`;
 const Column = styled.div`
     margin-top: 16px;
     display: flex;
@@ -202,4 +223,4 @@ const Column = styled.div`
     margin-top: 5px;
     color: #4E5A65;
     }
-`
+`;
