@@ -18,7 +18,15 @@ export default function Forms({ids, title, date, time, chairs}) {
         name: name,
         cpf: CPF
     };
-    
+
+    // for(let i=0;i<chairs.length;i++){
+    //   if(ids[i]===ids[i]){
+    //     //  chairs.splice(i);
+    //     console.log(chairs);
+    //   }
+    // }
+    console.log(chairs);
+
     const promise=axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many",postObject);
 
     promise.then(resposta => {
@@ -51,7 +59,7 @@ export default function Forms({ids, title, date, time, chairs}) {
       <OrangeBox onClick={submitData}>
         Reservar assento(s)
       </OrangeBox>
-    </FormsContainer>  
+    </FormsContainer>
   );
 }
 
@@ -118,14 +126,14 @@ const Container = styled.div`
    font-style: italic;
     }
     :-moz-placeholder {
-    font-style: italic;  
+    font-style: italic;
     }
     ::-moz-placeholder {
-    font-style: italic;  
+    font-style: italic;
     }
-    :-ms-input-placeholder {  
-    font-style: italic; 
+    :-ms-input-placeholder {
+    font-style: italic;
     }
     }
-    
+
 ` ;

@@ -7,6 +7,12 @@ export default function Success(){
     const {state} = useLocation();
     const {name ,cpf, title , date ,time, chairs} = state;
 
+
+    // for(let i=0;i<chairs.length;i++){
+    //     if(chairs[i]===chairs[i]){
+    //        chairs.splice(i); 
+    //     }
+    // }
     
     
     console.log(state);
