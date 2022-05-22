@@ -19,12 +19,6 @@ export default function Forms({ids, title, date, time, chairs}) {
         cpf: CPF
     };
 
-    // for(let i=0;i<chairs.length;i++){
-    //   if(ids[i]===ids[i]){
-    //     //  chairs.splice(i);
-    //     console.log(chairs);
-    //   }
-    // }
     console.log(chairs);
 
     const promise=axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many",postObject);

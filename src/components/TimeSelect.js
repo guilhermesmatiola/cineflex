@@ -9,7 +9,6 @@ export default function MovieSelect({id}){
   
     const [sessions, setSessions] = React.useState([]);
     let params = useParams();
-    //console.log("params.id: "+params.id);
 
 	useEffect(() => {
 		const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${params.id}/showtimes`);
@@ -23,8 +22,6 @@ export default function MovieSelect({id}){
 	if(sessions.length ===  0) {
 		return (<h1>Loading...</h1>);
 	}
-
-    //console.log(sessions); 
 
     return( 
         <>

@@ -34,20 +34,6 @@ export default function ChairSelect(){
         }    
     }
 
-    // function selectChair(id){
-    //     Chairnames(id);
-    //     let newids=[...ids];
-    //     for(let i=0;i<newids.length;i++){
-    //         if(newids[i]===id){
-    //             newids.splice(i);
-    //             setIds(newids);
-                
-    //             return;
-    //         }
-    //     }
-    //     newids.push(id);
-    //     setIds(newids);
-    // }
     function selectChair(id){
         let newids=[...ids];
         let newnames=[...chairnames];
