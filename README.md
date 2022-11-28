@@ -1,3 +1,6 @@
+Single-Page Application (SPA) para selecionar filme, sessão, cadeira para assistir um filme no cinema! Consome a API da Driven Education
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
